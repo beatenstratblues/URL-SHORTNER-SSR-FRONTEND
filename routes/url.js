@@ -1,5 +1,6 @@
 const express=require("express");
-const {generateNewShortURL, redirectAndUpdate, analyticsDisplay} = require("../controller/url.js");
+const {generateNewShortURL, redirectAndUpdate, analyticsDisplay, homePage} = require("../controller/url.js");
+const { URL } = require("../models/url.js");
 
 const urlRouter=express.Router();
 
