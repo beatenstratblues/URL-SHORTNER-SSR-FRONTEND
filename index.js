@@ -4,6 +4,9 @@ const { connectionToDb } = require("./connection");
 const path = require("path");
 const { router } = require("./routes/staticRouter");
 const { userRoute } = require("./routes/user");
+const { GenerateUrlOnlyIfLoggedIn } = require("./middleWares/auth");
+const cookieParser = require("cookie-parser");
+
 
 connectionToDb();
 
@@ -15,8 +18,9 @@ app.set("views", path.resolve("./views"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
-app.use("/url", urlRouter);
+app.use("/url", GenerateUrlOnlyIfLoggedIn, urlRouter);
 app.use("/", router);
 app.use("/user", userRoute);
 

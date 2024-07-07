@@ -27,7 +27,7 @@ async function redirectAndUpdate(req, res) {
       },
     }
   );
-  res.redirect(entry.redirectUrl);
+  res.redirect(entry?.redirectUrl);
 }
 
 async function analyticsDisplay(req, res) {

@@ -1,6 +1,6 @@
 const { USERS } = require("../models/users");
 const { v4: uuidv4 } = require("uuid");
-const { setUid, GetUid } = require("../services/auth");
+const { setUid } = require("../services/auth");
 
 async function handleUserSignUp(req, res) {
   const body = req.body;
@@ -21,8 +21,8 @@ async function handleUserSignIn(req, res) {
       error: "The email or password was wrong!!",
     });
   const sessionId = uuidv4();
-
-  res.cookies("uid", sessionId);
+  setUid(sessionId,user);
+  res.cookie("uid", sessionId);
   return res.redirect("/");
 }
 
