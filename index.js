@@ -4,7 +4,7 @@ const { connectionToDb } = require("./connection");
 const path = require("path");
 const { router } = require("./routes/staticRouter");
 const { userRoute } = require("./routes/user");
-const { GenerateUrlOnlyIfLoggedIn } = require("./middleWares/auth");
+const { GenerateUrlOnlyIfLoggedIn, checkAuth } = require("./middleWares/auth");
 const cookieParser = require("cookie-parser");
 
 

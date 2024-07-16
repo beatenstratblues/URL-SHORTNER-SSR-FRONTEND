@@ -19,7 +19,7 @@ async function handleUserSignIn(req, res) {
     return res.render("login.ejs", {
       error: "The email or password was wrong!!",
     });
-  
+
   const token = setUid(user);
   res.cookie("JwtToken", token);
   return res.redirect("/");
